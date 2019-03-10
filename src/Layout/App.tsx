@@ -6,8 +6,7 @@ import Home from '../Home/Home'
 import Projects from '../Projects/Projects'
 import Project from '../Projects/Project'
 import Footer from "../Layout/Footer";
-import jss from 'jss';
-
+import injectSheet, { jss, ThemeProvider, Styles, CSSProperties } from "react-jss";
 
 const routes = [
   {
@@ -26,41 +25,25 @@ const routes = [
   }
 ];
 
-jss.setup()
-class App extends Component {
-//   const styles = ({ palette, spacing, breakpoints }: Theme) => jss.createStyleSheet({
-//     textField: {
+const styles = {
+  body: {
+    background: '#D2D1D1',
+    height: '100%'
+  },
+  content:{
+    padding: 20
+  }
+};
 
-//     },
-//     main: {
-//         width: 'auto',
-//         display: 'block', // Fix IE 11 issue.
-//         marginLeft: spacing.unit * 3,
-//         marginRight: spacing.unit * 3,
-//         [breakpoints.up(400 + spacing.unit * 3 * 2)]: {
-//             width: 400,
-//             marginLeft: 'auto',
-//             marginRight: 'auto',
-//         },
-//     },
-//     avatar: {
-//         margin: spacing.unit,
-//         backgroundColor: palette.secondary.main,
-//     },
-//     form: {
-//         width: '100%', // Fix IE 11 issue.
-//         marginTop: spacing.unit,
-//     },
-//     submit: {
-//         marginTop: spacing.unit * 3,
-//     },
-// });
+interface IAppProps {
+  classes: any
+}
 
-  render() {
-    return (
-      <div>
-        <NavBarTop />
-
+const App: React.FunctionComponent<IAppProps> = ({ classes }) => {
+  return (
+    <div className={classes.body}>
+      <NavBarTop />
+      <div className={classes.content}>
         {routes.map((route, index) => (
           <Route
             key={index}
@@ -69,11 +52,10 @@ class App extends Component {
             component={route.main}
           />
         ))}
-
-        <Footer />
       </div>
-    );
-  }
-}
+      <Footer />
+    </div>
+  );
+};
 
-export default withStyles(styles)(App);
+export default injectSheet(styles)(App);
