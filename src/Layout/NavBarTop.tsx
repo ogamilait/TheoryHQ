@@ -9,6 +9,9 @@ const styles = {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
+        position: 'fixed',
+        top: 0,
+        width: '100%',
         '& ul': {
             listStyleType: 'none',
             margin: 0,

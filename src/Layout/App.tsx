@@ -27,11 +27,12 @@ const routes = [
 
 const styles = {
   body: {
-    background: '#D2D1D1',
     height: '100%'
   },
   content:{
-    padding: 20
+    padding: 20,
+    background: '#D2D1D1',
+    margin: '50px 0px',
   }
 };
 
