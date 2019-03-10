@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import App from './Layout/App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
@@ -10,7 +10,6 @@ const Index = (
         <App />
     </Router>
 )
-
 
 ReactDOM.render(Index, document.getElementById('root'));
 
