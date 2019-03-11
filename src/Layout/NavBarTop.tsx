@@ -12,20 +12,56 @@ const styles = {
         position: 'fixed',
         top: 0,
         width: '100%',
+    },
+    menu: {
+        listStyleType: 'none',
+        margin: 0,
+        display: 'inline-flex',
+        padding: 0,
+        '& li': {
+            fontSize: 20,
+            padding: 5,
+            '& a': {
+                padding: 5
+            }
+        }
+    },
+    toggleMenu: {
+        display: 'none',
+        marginRight: 20,
+        cursor: 'pointer',
         '& ul': {
-            listStyleType: 'none',
-            margin: 0,
-            display: 'inline-flex',
-            padding: 0,
+            display: 'table',
+            width: 25,
+            listStyle: 'none',
+            paddingInlineStart: 0,
             '& li': {
-                fontSize: 20,
-                padding: 5,
-                '& a': {
-                    padding: 5
+                width: '100%',
+                height: 3,
+                backgroundColor: '#002e5b',
+                marginBottom: 4,
+                '& :last-child': {
+                    marginBottom: 0,
                 }
             }
         }
     },
+    '@media (max-width: 768px)': {
+        toggleMenu: {
+            display: 'inline-flex',
+        },
+        menu: {
+            display: 'none',
+            "& active": {
+                position: 'absolute',
+                right: 10,
+                display: 'flex',
+                flexDirection: 'column',
+                top: 50,
+                background: '#b1b1b1',
+            }
+        },
+    }
 };
 
 interface INavBarTop {
@@ -36,14 +72,17 @@ const NavBarTop: React.FunctionComponent<INavBarTop> = ({ classes }) => {
     return (
         <div className={classes.header}>
             <div>Logo</div>
-            <ul>
-                <li>
-                    <Link to="/">Home</Link>
-                </li>
-                <li>
-                    <Link to="/projects">Projects</Link>
-                </li>
-            </ul>
+
+                <label className={classes.toggleMenu}><ul><li></li> <li></li><li></li></ul></label>
+
+                <ul className={classes.menu}>
+                    <li>
+                        <Link to="/">Home</Link>
+                    </li>
+                    <li>
+                        <Link to="/projects">Projects</Link>
+                    </li>
+                </ul>
         </div>
     );
 }

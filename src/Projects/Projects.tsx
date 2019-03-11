@@ -18,6 +18,9 @@ export const projectsList = [
 ]
 
 const styles = {
+    projects: {
+        width: '100%',
+    },
     title: {
         background: '#fff',
         padding: 10,
@@ -66,7 +69,7 @@ interface IProjects {
 
 const Projects: React.FunctionComponent<IProjects> = ({ classes }) => {
     return (
-        <div>
+        <div className={classes.projects}>
             <div className={classes.title}>Projects</div>
             <div className={classes.content}>
                 {projectsList.map((project) => (

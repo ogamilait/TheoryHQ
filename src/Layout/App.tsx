@@ -27,14 +27,20 @@ const routes = [
 
 const styles = {
   body: {
-    height: '100%'
+    height: 'calc(100% - 50px)',
+    display: 'flex',
+    justifyContent: 'center',
   },
   content:{
     padding: 20,
-    background: '#D2D1D1',
     margin: '50px 0px',
+    height: 'calc(100% - 40px)',
+    maxWidth: 1268,
+    display: 'flex',
+    justifyContent: 'center',
+    width: '100%',
   }
-};
+}
 
 interface IAppProps {
   classes: any

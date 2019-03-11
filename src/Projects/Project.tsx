@@ -5,6 +5,9 @@ import { Link, Redirect } from 'react-router-dom';
 import injectSheet from "react-jss";
 
 const styles = {
+    body: {
+        width: '100%',
+    },
     title: {
         background: '#fff',
         padding: 10,
@@ -66,7 +69,7 @@ const Project: React.FunctionComponent<RouteComponentProps<any>> = (props: any) 
     // }
 
     return (
-        <div >
+        <div className={classes.body}>
             <div>
                 <div className={classes.title}>{project.title}</div>
                 <div className={classes.description}>{project.description}</div>
