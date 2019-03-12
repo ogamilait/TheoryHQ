@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import NavBarTop from './NavBarTop'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 import Home from '../Home/Home'
 import Projects from '../Projects/Projects'
 import Project from '../Projects/Project'
@@ -24,6 +24,7 @@ const routes = [
     main: () => <Project />
   }
 ];
+
 
 const styles = {
   body: {
@@ -51,6 +52,7 @@ const App: React.FunctionComponent<IAppProps> = ({ classes }) => {
     <div className={classes.body}>
       <NavBarTop />
       <div className={classes.content}>
+      <Switch>
         {routes.map((route, index) => (
           <Route
             key={index}
@@ -59,6 +61,7 @@ const App: React.FunctionComponent<IAppProps> = ({ classes }) => {
             component={route.main}
           />
         ))}
+        </Switch>
       </div>
       <Footer />
     </div>

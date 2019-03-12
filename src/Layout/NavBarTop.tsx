@@ -74,7 +74,7 @@ interface INavBarTop {
 
 const NavBarTop: React.FunctionComponent<INavBarTop> = ({ classes }) => {
 
-     let [openMenu, setMenu] = useState(false)
+    let [openMenu, setMenu] = useState(false)
 
     return (
         <div className={classes.header}>

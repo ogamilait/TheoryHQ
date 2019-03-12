@@ -95,9 +95,6 @@ export interface IProject {
 }
 
 const ProjectTmp: React.FunctionComponent<IProject> = (props: IProject) => {
-    // function openProject (event: React.MouseEvent<HTMLDivElement>){
-    // }
-
     let classes = props.classes
 
     return (

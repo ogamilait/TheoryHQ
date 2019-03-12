@@ -41,17 +41,13 @@ const styles = {
     }
 };
 
-// interface IParams {
-//     classes: any,
-//     match: any
-// }
-
 const Project: React.FunctionComponent<RouteComponentProps<any>> = (props: any) => {
     let match = props.match
     let classes = props.classes
     let id: number = parseInt(match.params.id)
+    let backId: number = id - 1
+    let nextId: number = id + 1
     let project: IProject = projectsList[id - 1]
-    // let [value, setValue] = useState(0)
 
     if (project === undefined)
         return (
@@ -60,13 +56,6 @@ const Project: React.FunctionComponent<RouteComponentProps<any>> = (props: any) 
                 <Link to="/projects">Back to list of projects</Link>
             </div>
         )
-
-    let backId: number = id - 1
-    let nextId: number = id + 1
-
-    // function back (){
-    //     history.push('/projects/'+backId)
-    // }
 
     return (
         <div className={classes.body}>
@@ -81,6 +70,5 @@ const Project: React.FunctionComponent<RouteComponentProps<any>> = (props: any) 
         </div>
     );
 };
-export default withRouter(injectSheet(styles)(Project));
 
-// export default withRouter(Project);
+export default withRouter(injectSheet(styles)(Project));
