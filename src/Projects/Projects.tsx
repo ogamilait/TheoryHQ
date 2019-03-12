@@ -1,14 +1,9 @@
 import React, { useState, useEffect, ElementType } from 'react';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import injectSheet from "react-jss";
+import { FaExternalLinkAlt } from 'react-icons/fa';
 
 export const projectsList = [
-    { id: 1, title: 'Title 1', description: 'Dolor duis deserunt et non excepteur ex adipisicing reprehenderit. Esse ea commodo labore sit officia non velit tempor sint eiusmod minim culpa eiusmod. Ad exercitation proident laboris irure enim enim sint laborum elit mollit occaecat occaecat dolore non. Ipsum sunt elit ipsum excepteur non nisi consequat nostrud aliqua mollit velit. Pariatur eu nostrud nostrud reprehenderit sit. Incididunt ullamco cupidatat in voluptate dolor do eu.' },
-    { id: 2, title: 'Title 2', description: 'Dolor duis deserunt et non excepteur ex adipisicing reprehenderit. Esse ea commodo labore sit officia non velit tempor sint eiusmod minim culpa eiusmod.' },
-    { id: 3, title: 'Title 3', description: 'Esse ea commodo labore sit officia non velit tempor sint eiusmod minim culpa eiusmod.' },
-    { id: 4, title: 'Title 4', description: 'Esse ea commodo labore sit officia non velit tempor sint eiusmod minim culpa eiusmod. Esse ea commodo labore sit officia non velit tempor sint eiusmod minim culpa eiusmod. Esse ea commodo labore sit officia non velit tempor sint eiusmod minim culpa eiusmod.' },
-    { id: 5, title: 'Title 5', description: 'Esse ea commodo labore sit officia non velit tempor sint eiusmod minim culpa eiusmod.' },
-    { id: 6, title: 'Title 6', description: 'Description 6' },
     { id: 1, title: 'Title 1', description: 'Dolor duis deserunt et non excepteur ex adipisicing reprehenderit. Esse ea commodo labore sit officia non velit tempor sint eiusmod minim culpa eiusmod. Ad exercitation proident laboris irure enim enim sint laborum elit mollit occaecat occaecat dolore non. Ipsum sunt elit ipsum excepteur non nisi consequat nostrud aliqua mollit velit. Pariatur eu nostrud nostrud reprehenderit sit. Incididunt ullamco cupidatat in voluptate dolor do eu.' },
     { id: 2, title: 'Title 2', description: 'Dolor duis deserunt et non excepteur ex adipisicing reprehenderit. Esse ea commodo labore sit officia non velit tempor sint eiusmod minim culpa eiusmod.' },
     { id: 3, title: 'Title 3', description: 'Esse ea commodo labore sit officia non velit tempor sint eiusmod minim culpa eiusmod.' },
@@ -37,6 +32,7 @@ const styles = {
         }
     },
     block: {
+        position: 'relative',
         height: 100,
         background: '#fff',
         padding: 10,
@@ -60,6 +56,11 @@ const styles = {
         "&:nth-child(4n-1)": {
             background: 'red'
         },
+    },
+    newWindow: {
+        position: 'absolute',
+        top: 15,
+        right: 20,
     },
     '@media (max-width: 768px)': {
         block: {
@@ -101,6 +102,7 @@ const ProjectTmp: React.FunctionComponent<IProject> = (props: IProject) => {
 
     return (
         <div className={classes.block}>
+            <span className={classes.newWindow}><Link to={'/projects/' + props.id} target="_blank"><FaExternalLinkAlt /></Link></span>
             <Link to={'/projects/' + props.id}>{props.title}</Link>
         </div>
     )

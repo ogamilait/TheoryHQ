@@ -21,7 +21,9 @@ const styles = {
                 fontSize: 20,
                 padding: 5,
                 '& a': {
-                    padding: 5
+                    padding: 5,
+                    color: '#fff',
+                    textDecoration: 'none',
                 }
             }
         }
