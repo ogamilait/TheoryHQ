@@ -27,7 +27,18 @@ const styles = {
         "&:nth-child(even)": {
             marginLeft: 10,
         },
-    }
+    },
+    '@media (max-width: 768px)': {
+        content: {
+            flexDirection: 'column',
+        },
+        block: {
+            width: 'calc(100% - 20px)',
+            marginRight: '0 !important',
+            marginLeft: '0 !important',
+            marginBottom: 10,
+        },
+    },
 };
 
 interface IHome {

@@ -60,7 +60,14 @@ const styles = {
         "&:nth-child(4n-1)": {
             background: 'red'
         },
-    }
+    },
+    '@media (max-width: 768px)': {
+        block: {
+            width: '100%',
+            marginRight: '0 !important',
+            marginLeft: '0 !important',
+        },
+    },
 };
 
 interface IProjects {

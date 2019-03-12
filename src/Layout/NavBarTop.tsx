@@ -1,4 +1,5 @@
-import * as React from 'react';
+import React, { useState, useEffect, ElementType } from 'react';
+
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import injectSheet from "react-jss";
 
@@ -52,14 +53,14 @@ const styles = {
         },
         menu: {
             display: 'none',
-            "& active": {
-                position: 'absolute',
-                right: 10,
-                display: 'flex',
-                flexDirection: 'column',
-                top: 50,
-                background: '#b1b1b1',
-            }
+        },
+        active: {
+            position: 'absolute',
+            right: 10,
+            display: 'flex',
+            flexDirection: 'column',
+            top: 50,
+            background: '#b1b1b1',
         },
     }
 };
@@ -68,14 +69,16 @@ interface INavBarTop {
     classes: any
 }
 
+
 const NavBarTop: React.FunctionComponent<INavBarTop> = ({ classes }) => {
+
+     let [openMenu, setMenu] = useState(false)
+
     return (
         <div className={classes.header}>
             <div>Logo</div>
-
-                <label className={classes.toggleMenu}><ul><li></li> <li></li><li></li></ul></label>
-
-                <ul className={classes.menu}>
+                <label onClick={()=> setMenu(!openMenu)} className={classes.toggleMenu}><ul><li></li> <li></li><li></li></ul></label>
+                <ul className={openMenu ? classes.menu + ' '+ classes.active: classes.menu }>
                     <li>
                         <Link to="/">Home</Link>
                     </li>
