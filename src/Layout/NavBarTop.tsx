@@ -73,7 +73,6 @@ interface INavBarTop {
 
 
 const NavBarTop: React.FunctionComponent<INavBarTop> = ({ classes }) => {
-
     let [openMenu, setMenu] = useState(false)
 
     return (

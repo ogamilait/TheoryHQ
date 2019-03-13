@@ -2,7 +2,8 @@ import React, { useState, useEffect, ElementType } from 'react';
 import { IProject, projectsList } from './Projects'
 import rr, { withRouter, RouteProps, Route, Router, RouteComponentProps, match } from 'react-router';
 import { Link, Redirect } from 'react-router-dom';
-import injectSheet from "react-jss";
+import withStyles, {InjectOptions, Theming, withTheme } from "react-jss";
+import { Theme } from "theming";
 
 const styles = {
     body: {
@@ -42,8 +43,10 @@ const styles = {
 };
 
 const Project: React.FunctionComponent<RouteComponentProps<any>> = (props: any) => {
+    debugger
     let match = props.match
     let classes = props.classes
+    const theme = props.theme
     let id: number = parseInt(match.params.id)
     let backId: number = id - 1
     let nextId: number = id + 1
@@ -64,11 +67,11 @@ const Project: React.FunctionComponent<RouteComponentProps<any>> = (props: any) 
                 <div className={classes.description}>{project.description}</div>
             </div>
             <div className={classes.pagination}>
-                <Link to={"/projects/" + backId}><button className={classes.btn}>Back</button></Link>
-                <Link to={"/projects/" + nextId}><button className={classes.btn}>Next</button></Link>
+                <Link to={"/projects/" + backId}><button className={classes.btnPrimary}>Back</button></Link>
+                <Link to={"/projects/" + nextId}><button className={classes.btnPrimary}>Next</button></Link>
             </div>
         </div>
     );
 };
 
-export default withRouter(injectSheet(styles)(Project));
+export default withRouter(withStyles(styles)(Project));

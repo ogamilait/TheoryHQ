@@ -4,10 +4,14 @@ import './index.css';
 import App from './Layout/App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import withStyles, {ThemeProvider} from 'react-jss'
+import {ThemeStyles} from './Layout/Theme'
 
 const Index = (
     <Router>
-        <App />
+        <ThemeProvider theme={ThemeStyles}>
+            <App />
+        </ThemeProvider>
     </Router>
 )
 
