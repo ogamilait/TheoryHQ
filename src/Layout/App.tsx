@@ -30,7 +30,9 @@ const styles = {
   body: {
     height: 'calc(100% - 50px)',
     display: 'flex',
-    justifyContent: 'center',
+    // justifyContent: 'center',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   content:{
     padding: 20,
@@ -39,7 +41,7 @@ const styles = {
     maxWidth: 1268,
     display: 'flex',
     justifyContent: 'center',
-    width: '100%',
+    width: 'calc(100% - 40px)',
   }
 }
 

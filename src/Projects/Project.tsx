@@ -23,9 +23,9 @@ const styles = {
         padding: 10,
         background: '#fff',
         borderRadius: 10,
-        '& a': {
-            // textDecoration: 'none',
-        }
+        textOverflow: 'ellipsis',
+        overflow: 'hidden',
+        height: 100,
     },
     pagination: {
         display: 'flex',
@@ -39,11 +39,14 @@ const styles = {
         border: 0,
         padding: '6px',
         width: '80px',
+        '&:disabled': {
+            background: '#999',
+            color: '#777',
+        },
     }
 };
 
 const Project: React.FunctionComponent<RouteComponentProps<any>> = (props: any) => {
-    debugger
     let match = props.match
     let classes = props.classes
     const theme = props.theme
@@ -51,6 +54,8 @@ const Project: React.FunctionComponent<RouteComponentProps<any>> = (props: any) 
     let backId: number = id - 1
     let nextId: number = id + 1
     let project: IProject = projectsList[id - 1]
+    let disableBack: boolean = projectsList[id - 2] ? false : true;
+    let disableNext: boolean = projectsList[id] ? false : true;
 
     if (project === undefined)
         return (
@@ -67,8 +72,8 @@ const Project: React.FunctionComponent<RouteComponentProps<any>> = (props: any) 
                 <div className={classes.description}>{project.description}</div>
             </div>
             <div className={classes.pagination}>
-                <Link to={"/projects/" + backId}><button className={classes.btnPrimary}>Back</button></Link>
-                <Link to={"/projects/" + nextId}><button className={classes.btnPrimary}>Next</button></Link>
+                <Link to={"/projects/" + backId}><button disabled={disableBack} className={classes.btn}>Back</button></Link>
+                <Link to={"/projects/" + nextId}><button disabled={disableNext} className={classes.btn}>Next</button></Link>
             </div>
         </div>
     );

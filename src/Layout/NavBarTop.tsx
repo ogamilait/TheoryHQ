@@ -1,7 +1,10 @@
-import React, { useState, useEffect, ElementType } from 'react';
+import React, { useState, useEffect, ElementType, RefObject } from 'react';
+import ReactDOM from 'react-dom';
+
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import injectSheet from "react-jss";
+import { ReactComponent } from '*.svg';
 
 const styles = {
     header: {
@@ -10,9 +13,10 @@ const styles = {
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        position: 'fixed',
         top: 0,
         width: '100%',
+        zIndex: 1,
+        position: 'fixed',
     },
     menu: {
         listStyleType: 'none',
@@ -68,25 +72,26 @@ const styles = {
 };
 
 interface INavBarTop {
-    classes: any
+    classes: any,
 }
 
 
-const NavBarTop: React.FunctionComponent<INavBarTop> = ({ classes }) => {
+const NavBarTop: React.FunctionComponent<INavBarTop> = (props: INavBarTop) => {
     let [openMenu, setMenu] = useState(false)
+    let classes = props.classes;
 
     return (
         <div className={classes.header}>
             <div>Logo</div>
-                <label onClick={()=> setMenu(!openMenu)} className={classes.toggleMenu}><ul><li></li> <li></li><li></li></ul></label>
-                <ul className={openMenu ? classes.menu + ' '+ classes.active: classes.menu }>
-                    <li>
-                        <Link to="/">Home</Link>
-                    </li>
-                    <li>
-                        <Link to="/projects">Projects</Link>
-                    </li>
-                </ul>
+            <label onClick={() => setMenu(!openMenu)} className={classes.toggleMenu}><ul><li></li> <li></li><li></li></ul></label>
+            <ul className={openMenu ? classes.menu + ' ' + classes.active : classes.menu}>
+                <li>
+                    <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/projects">Projects</Link>
+                </li>
+            </ul>
         </div>
     );
 }
